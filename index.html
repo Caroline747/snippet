@@ -5,6 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
+<style>
+    body {
+    margin: 0;
+    overflow: hidden; /* Evita barras de rolagem indesejadas durante o arrasto */
+}
+
+.container {
+    display: flex;
+    height: 100vh; /* Ocupa toda a altura da viewport */
+    width: 100vw;
+}
+
+.panel {
+    flex-grow: 1; /* Permite que os painéis cresçam para preencher o espaço */
+    overflow: auto; /* Adiciona barras de rolagem se o conteúdo exceder */
+    padding: 15px;
+    background-color: #f0f0f0;
+}
+
+.left-panel {
+    background-color: #e0e0e0;
+    width: 50%; /* Largura inicial */
+}
+
+.right-panel {
+    background-color: #d0d0d0;
+}
+
+.resizer {
+    width: 8px; /* Largura da alça de arraste */
+    background-color: #ccc;
+    cursor: col-resize; /* Muda o cursor para indicar redimensionamento horizontal */
+    /* Garante que a alça fique acima de outros elementos */
+    z-index: 100;
+    flex-shrink: 0; /* Impede que a alça encolha */
+}
+
+.resizer:hover {
+    background-color: #aaa;
+}
+
+</style>
+
 <body>
 
 <h1>Welcome to the Homepage</h1>
@@ -12,26 +56,75 @@
 
 <div>
     <button style="padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px;">
-        <a href="/modais/modal-exemplos.html" style="color: white; text-decoration: none;">Modais</a>
+        <a href="/modais/index-modal.html" style="color: white; text-decoration: none;">Modais</a>
     </button>
 
     <button style="padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px;">
-        <a href="/modais/modal-exemplos.html" style="color: white; text-decoration: none;">Botoes</a>
+        <a href="/modais/index-botoes.html" style="color: white; text-decoration: none;">Botoes</a>
     </button>
 
     <button style="padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px;">
-        <a href="/modais/modal-exemplos.html" style="color: white; text-decoration: none;">Formulários</a>
+        <a href="/modais/index-formularios.html" style="color: white; text-decoration: none;">Formulários</a>
     </button>
 
     <button style="padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px;">
-        <a href="/modais/modal-exemplos.html" style="color: white; text-decoration: none;">Navegação</a>
+        <a href="/modais/index-navegacao.html" style="color: white; text-decoration: none;">Navegação</a>
     </button>
 
     <button style="padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px;">
-        <a href="/modais/modal-exemplos.html" style="color: white; text-decoration: none;">Extras</a>
+        <a href="/modais/index-extras.html" style="color: white; text-decoration: none;">Extras</a>
     </button>
 
 </div>
+
+<div class="container">
+    <div class="panel left-panel">
+        <!-- Conteúdo do painel esquerdo -->
+        <h2>Painel Esquerdo</h2>
+        <p>Arraste a barra do meio para redimensionar.</p>
+    </div>
+    <div class="resizer" id="dragHandle"></div>
+    <div class="panel right-panel">
+        <!-- Conteúdo do painel direito -->
+        <h2>Painel Direito</h2>
+    </div>
+</div>
+
+<script>
+    const resizer = document.getElementById('dragHandle');
+const leftPanel = document.querySelector('.left-panel');
+const rightPanel = document.querySelector('.right-panel');
+const container = document.querySelector('.container');
+
+let isResizing = false;
+
+// Quando o mouse é pressionado na alça
+resizer.addEventListener('mousedown', (e) => {
+    isResizing = true;
+    // Impede a seleção de texto durante o arrasto
+    document.body.style.userSelect = 'none';
+});
+
+// Quando o mouse se move
+document.addEventListener('mousemove', (e) => {
+    if (!isResizing) return;
+
+    // Calcula a nova largura do painel esquerdo com base na posição do mouse
+    let newLeftWidth = e.clientX;
+    let containerWidth = container.getBoundingClientRect().width;
+    
+    // Define a largura do painel esquerdo em pixels, garantindo limites mínimos se desejar
+    leftPanel.style.width = `${newLeftWidth}px`;
+    // O painel direito se ajusta automaticamente devido ao flex-grow: 1
+});
+
+// Quando o botão do mouse é solto
+document.addEventListener('mouseup', () => {
+    isResizing = false;
+    document.body.style.userSelect = '';
+});
+
+</script>
     
 </body>
 </html>
