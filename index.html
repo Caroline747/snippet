@@ -1,130 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Snippet de Códigos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
-
-<style>
-    body {
-    margin: 0;
-    overflow: hidden; /* Evita barras de rolagem indesejadas durante o arrasto */
-}
-
-.container {
-    display: flex;
-    height: 100vh; /* Ocupa toda a altura da viewport */
-    width: 100vw;
-}
-
-.panel {
-    flex-grow: 1; /* Permite que os painéis cresçam para preencher o espaço */
-    overflow: auto; /* Adiciona barras de rolagem se o conteúdo exceder */
-    padding: 15px;
-    background-color: #f0f0f0;
-}
-
-.left-panel {
-    background-color: #e0e0e0;
-    width: 50%; /* Largura inicial */
-}
-
-.right-panel {
-    background-color: #d0d0d0;
-}
-
-.resizer {
-    width: 8px; /* Largura da alça de arraste */
-    background-color: #ccc;
-    cursor: col-resize; /* Muda o cursor para indicar redimensionamento horizontal */
-    /* Garante que a alça fique acima de outros elementos */
-    z-index: 100;
-    flex-shrink: 0; /* Impede que a alça encolha */
-}
-
-.resizer:hover {
-    background-color: #aaa;
-}
-
-</style>
 
 <body>
 
-<h1>Welcome to the Homepage</h1>
-<p>This is the main index page.</p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light"
+        style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); margin-bottom: 20px;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Snippet de Códigos</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-<div>
-    <button style="padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px;">
-        <a href="/modais/index-modal.html" style="color: white; text-decoration: none;">Modais</a>
-    </button>
+    <section class="d-flex flex-column align-items-center gap-3">
+        <button class="btn btn-primary">
+            <a href="/modais/index-modal.html" class="text-white text-decoration-none" target="_blank" rel="noopener noreferrer">Modais</a>
+        </button>
 
-    <button style="padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px;">
-        <a href="/modais/index-botoes.html" style="color: white; text-decoration: none;">Botoes</a>
-    </button>
+        <button class="btn btn-primary">
+            <a href="/modais/index-botoes.html" class="text-white text-decoration-none" target="_blank" rel="noopener noreferrer">Botoes</a>
+        </button>
 
-    <button style="padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px;">
-        <a href="/modais/index-formularios.html" style="color: white; text-decoration: none;">Formulários</a>
-    </button>
+        <button class="btn btn-primary">
+            <a href="/modais/index-formularios.html" class="text-white text-decoration-none" target="_blank" rel="noopener noreferrer">Formulários</a>
+        </button>
 
-    <button style="padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px;">
-        <a href="/modais/index-navegacao.html" style="color: white; text-decoration: none;">Navegação</a>
-    </button>
+        <button class="btn btn-primary">
+            <a href="/modais/index-navegacao.html" class="text-white text-decoration-none" target="_blank" rel="noopener noreferrer">Navegação</a>
+        </button>
 
-    <button style="padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px;">
-        <a href="/modais/index-extras.html" style="color: white; text-decoration: none;">Extras</a>
-    </button>
+        <button class="btn btn-primary">
+            <a href="/modais/index-extras.html" class="text-white text-decoration-none" target="_blank" rel="noopener noreferrer">Extras</a>
+        </button>
+    </section>
 
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous">
+    </script>
 
-<div class="container">
-    <div class="panel left-panel">
-        <!-- Conteúdo do painel esquerdo -->
-        <h2>Painel Esquerdo</h2>
-        <p>Arraste a barra do meio para redimensionar.</p>
-    </div>
-    <div class="resizer" id="dragHandle"></div>
-    <div class="panel right-panel">
-        <!-- Conteúdo do painel direito -->
-        <h2>Painel Direito</h2>
-    </div>
-</div>
-
-<script>
-    const resizer = document.getElementById('dragHandle');
-const leftPanel = document.querySelector('.left-panel');
-const rightPanel = document.querySelector('.right-panel');
-const container = document.querySelector('.container');
-
-let isResizing = false;
-
-// Quando o mouse é pressionado na alça
-resizer.addEventListener('mousedown', (e) => {
-    isResizing = true;
-    // Impede a seleção de texto durante o arrasto
-    document.body.style.userSelect = 'none';
-});
-
-// Quando o mouse se move
-document.addEventListener('mousemove', (e) => {
-    if (!isResizing) return;
-
-    // Calcula a nova largura do painel esquerdo com base na posição do mouse
-    let newLeftWidth = e.clientX;
-    let containerWidth = container.getBoundingClientRect().width;
-    
-    // Define a largura do painel esquerdo em pixels, garantindo limites mínimos se desejar
-    leftPanel.style.width = `${newLeftWidth}px`;
-    // O painel direito se ajusta automaticamente devido ao flex-grow: 1
-});
-
-// Quando o botão do mouse é solto
-document.addEventListener('mouseup', () => {
-    isResizing = false;
-    document.body.style.userSelect = '';
-});
-
-</script>
-    
 </body>
+
 </html>
